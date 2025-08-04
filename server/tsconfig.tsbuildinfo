@@ -1,0 +1,1 @@
+{"root":["./src/app.ts","./src/index.ts","./src/utils/sanitizeres.ts","./src/config/gemini.ts","./src/controllers/codecontroller.ts","./src/controllers/deploycontroller.ts","./src/routes/coderoutes.ts","./src/routes/deployroutes.ts"],"version":"5.9.2"}
