@@ -7,8 +7,8 @@ import { ai } from "../config/Gemini.js";
 import { cleanJsonString } from "../Utils/SanitizeRes.js";
 
 export const generateCode = async (req: Request, res: Response) => {
-
     try {
+        // Generate code using Gemini AI
         const { prompt } = req.body;
         const response = await ai.models.generateContent({
             model: "gemini-2.5-flash",
@@ -17,12 +17,14 @@ export const generateCode = async (req: Request, res: Response) => {
                 systemInstruction: "You are a code generator who generates code for the working responsive website according to given prompt. You generate code ONLY in HTML, CSS, and JavaScript. Javascript should work with dom. After generating the code, you will write the code in JSON format with keys as HTML, CSS and, JavaScript that should be able to parse using JSON.parse() function without any markdown like ```JSON .....``` or anything like that."
             }
         });
-    
+        
+        // Parse the response and send it back
         const clearRes = cleanJsonString(response.text as string)
         const { HTML, CSS, JavaScript } = JSON.parse(clearRes)
     
         res.json({ HTML, CSS, JavaScript });
-    } catch {
+    } catch(e) {
+        console.error("Error generating code:", e);
         res.json({ message: "Please enter a valid prompt" })
     }
 }
@@ -31,6 +33,7 @@ export const generateCode = async (req: Request, res: Response) => {
 export const downloadCode = async (req: Request, res: Response) => {
     try {
         const { HTML, CSS, JavaScript } = req.body.Code;
+
         // Create a temporary directory
         const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "code-download-"));
 
