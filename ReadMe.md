@@ -1,3 +1,9 @@
+# Veg: AI Website Builder
+
+Ever wanted to host your own website in 2 minutes? You are at the correct place. Veg is the AI website builder you were looking for.
+
+Veg is a web-based code editor designed for rapid HTML/CSS/JS prototyping with a seamless **AI-powered code generation**, **real-time preview**, **ZIP export**, and **one-click deployment to Netlify**. Built with performance and developer experience in mind, Veg is ideal for frontend learners, educators, and rapid prototyping enthusiasts.
+
 ## Features
 
 - **AI Code Generation** using the Gemini API
